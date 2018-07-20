@@ -21,6 +21,7 @@ public class MainActivityFragment extends Fragment {
 
     public String retrievedJoke = null;
     private static final String JOKE_EXTRA = "jokeExtra";
+    public boolean testFlag = false;
 
     public MainActivityFragment() {
     }
@@ -53,13 +54,14 @@ public class MainActivityFragment extends Fragment {
         new EndpointsAsyncTask().execute(this);
     }
 
-    public void startJokeActivity(){
-        Context context = getActivity();
-        Intent intent = new Intent(context, AndroidLibraryJokeActivity.class);
-        intent.putExtra(JOKE_EXTRA, retrievedJoke);
-        if (context != null) {
-            context.startActivity(intent);
+    public void startJokeActivity() {
+        if (!testFlag) {
+            Context context = getActivity();
+            Intent intent = new Intent(context, AndroidLibraryJokeActivity.class);
+            intent.putExtra(JOKE_EXTRA, retrievedJoke);
+            if (context != null) {
+                context.startActivity(intent);
+            }
         }
-
     }
 }
