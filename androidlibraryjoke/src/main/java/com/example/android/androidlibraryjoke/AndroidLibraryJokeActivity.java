@@ -1,5 +1,6 @@
 package com.example.android.androidlibraryjoke;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ public class AndroidLibraryJokeActivity extends AppCompatActivity {
     JokesProvider jokesProvider;
     String joke;
     TextView jokeTv;
+    private static final String JOKE_EXTRA = "jokeExtra";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +23,12 @@ public class AndroidLibraryJokeActivity extends AppCompatActivity {
 
         jokeTv = findViewById(R.id.android_library_tv);
 
-        tellJoke();
-    }
-
-    /**
-     * This method use the java library to fetch the joke through jokesProvider method.
-     */
-    public void tellJoke() {
-        jokesProvider = new JokesProvider();
-        joke = jokesProvider.tellAJoke();
+        Intent intent = getIntent();
+        joke = intent.getStringExtra(JOKE_EXTRA);
         jokeTv.setText(joke);
+
         Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
     }
-}
+
+
+   }

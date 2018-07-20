@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     JokesProvider jokesProvider;
     String joke;
+    private static final String JOKE_EXTRA = "jokeExtra";
+    EndpointsAsyncTask endpointsAsyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +54,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void tellJoke(View view) {
+       /* jokesProvider = new JokesProvider();
+        joke = jokesProvider.tellAJoke();
         //Launch android library activity when the button is clicked
         Intent intent = new Intent(this, AndroidLibraryJokeActivity.class);
-        startActivity(intent);
+        intent.putExtra(JOKE_EXTRA, joke);
+        startActivity(intent);*/
+       Context context = getApplicationContext();
+       endpointsAsyncTask = new EndpointsAsyncTask();
+       endpointsAsyncTask.execute(this);
     }
 
 
