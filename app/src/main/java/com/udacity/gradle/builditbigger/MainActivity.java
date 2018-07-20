@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AndroidLibraryJokeActivity.class);
         intent.putExtra(JOKE_EXTRA, joke);
         startActivity(intent);*/
-       Context context = getApplicationContext();
-       endpointsAsyncTask = new EndpointsAsyncTask();
-       endpointsAsyncTask.execute(this);
+
+       /*endpointsAsyncTask = new EndpointsAsyncTask();
+       endpointsAsyncTask.execute(this);*/
     }
 
 

@@ -25,9 +25,11 @@ public class AndroidLibraryJokeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         joke = intent.getStringExtra(JOKE_EXTRA);
-        jokeTv.setText(joke);
 
-        Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
+        if (jokeTv != null) {
+            jokeTv.setText(joke);
+        }
+
     }
 
 
